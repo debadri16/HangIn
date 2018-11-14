@@ -283,13 +283,15 @@ public class ProfileActivity extends AppCompatActivity {
                     Map unfriendMap = new HashMap();
                     unfriendMap.put("friends/" + mCurrentUser.getUid() + "/" + user_id, null);
                     unfriendMap.put("friends/" + user_id + "/" + mCurrentUser.getUid(), null);
+                    unfriendMap.put("chat/" + mCurrentUser.getUid() + "/" + user_id, null);
+                    unfriendMap.put("chat/" + user_id + "/" + mCurrentUser.getUid(), null);
 
                     mRootRef.updateChildren(unfriendMap, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
 
                             if(databaseError != null){
-                                Toast.makeText(ProfileActivity.this, "There was some error in sending request", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this, "There was some error in unfriending", Toast.LENGTH_SHORT).show();
                             }
                             else{
 

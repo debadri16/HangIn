@@ -80,6 +80,10 @@ public class ChatActivity extends AppCompatActivity {
     private static final int GALLERY_PICK = 1;
     private StorageReference mImageStorage;
 
+    private int check_friend = 1;           //////friends
+
+    private ValueEventListener mlistener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -167,10 +171,11 @@ public class ChatActivity extends AppCompatActivity {
         });
 
 
-        mRootRef.child("chat").child(mCurrentUserId).addValueEventListener(new ValueEventListener() {
+        ////////////////
+        mlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(!dataSnapshot.hasChild(mChatUser)){
+                if (!dataSnapshot.hasChild(mChatUser)) {
 
                     Map chatAddMap = new HashMap();
                     chatAddMap.put("seen", false);
@@ -184,7 +189,7 @@ public class ChatActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
 
-                            if(databaseError != null){
+                            if (databaseError != null) {
                                 Log.d("CHAT_LOG", databaseError.getMessage().toString());
                             }
 
@@ -199,7 +204,11 @@ public class ChatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        mRootRef.child("chat").child(mCurrentUserId).addValueEventListener(mlistener);
+        //////////////////////////////
+
 
         mChatSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,6 +240,13 @@ public class ChatActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+    @Override
+    protected void onStop() {
+        mRootRef.child("chat").child(mCurrentUserId).removeEventListener(mlistener);
+        super.onStop();
     }
 
     @Override
