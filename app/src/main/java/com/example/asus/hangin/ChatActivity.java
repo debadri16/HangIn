@@ -35,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -99,6 +100,7 @@ public class ChatActivity extends AppCompatActivity {
 
         mChatUser = getIntent().getStringExtra("user_id");
         String user_name = getIntent().getStringExtra("user_name");
+        String thumb_image = getIntent().getStringExtra("user_thumb");
 
         //getSupportActionBar().setTitle(user_name);
 
@@ -129,8 +131,12 @@ public class ChatActivity extends AppCompatActivity {
         
         loadMessages();
 
-
+        //set title
         mTitleView.setText(user_name);
+
+        //set thumbnail image
+        Picasso.get().load(thumb_image).placeholder(R.drawable.default_avatar).into(mProfileImage);
+
 
         mRootRef.child("users").child(mChatUser).addValueEventListener(new ValueEventListener() {
             @Override

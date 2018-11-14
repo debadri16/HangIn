@@ -92,7 +92,7 @@ public class FriendsFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         final String userName = dataSnapshot.child("name").getValue().toString();
-                        String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
+                        final String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
 
                         if(dataSnapshot.hasChild("online")) {
                             String userOnline = dataSnapshot.child("online").getValue().toString();
@@ -126,6 +126,7 @@ public class FriendsFragment extends Fragment {
                                             Intent chat_intent = new Intent(getContext(), ChatActivity.class);
                                             chat_intent.putExtra("user_id", list_user_id);
                                             chat_intent.putExtra("user_name", userName);
+                                            chat_intent.putExtra("user_thumb", userThumb);
                                             startActivity(chat_intent);
                                         }
 
