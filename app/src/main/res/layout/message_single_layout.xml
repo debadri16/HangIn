@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/message_single_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/message_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/message_text_background"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/time_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/message_text_layout"
+        android:layout_toEndOf="@+id/message_text_layout"
+        android:text="00:00" />
+
+    <ImageView
+        android:id="@+id/message_image_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:srcCompat="@drawable/default_avatar" />
+
+</RelativeLayout>

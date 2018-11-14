@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "377324315948",
+    "firebase_url": "https://hangin-92c55.firebaseio.com",
+    "project_id": "hangin-92c55",
+    "storage_bucket": "hangin-92c55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377324315948:android:8ce86ed977079446",
+        "android_client_info": {
+          "package_name": "com.example.asus.hangin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377324315948-v26btdahdgqcn0nenuimr6qoibcb93dp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.hangin",
+            "certificate_hash": "7c74e5f851a16ffe51c13691eb0664d44ae0a40e"
+          }
+        },
+        {
+          "client_id": "377324315948-1gj2eilf0iqltk0evhshmroh5etkbpi0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbQ0d8tG8mbzaFApK8STrva3hFFP-Vi2M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "377324315948-1gj2eilf0iqltk0evhshmroh5etkbpi0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
