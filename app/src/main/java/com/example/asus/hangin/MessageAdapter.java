@@ -36,12 +36,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
 
         public TextView messageText;
+        public TextView messageText2;
         public ImageView messageImage;
 
         public MessageViewHolder(View view){
             super(view);
 
             messageText = (TextView) view.findViewById(R.id.message_text_layout);
+            messageText2 = (TextView) view.findViewById(R.id.message_text_layout2);
             messageImage = (ImageView) view.findViewById(R.id.message_image_layout);
 
         }
@@ -62,35 +64,41 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         if(from_user.equals(current_user_id)){
 
             if(message_type.equals("image")){
-                viewHolder.messageText.setVisibility(View.INVISIBLE);
+                viewHolder.messageText.setVisibility(View.GONE);
+                viewHolder.messageText2.setVisibility(View.GONE);
                 viewHolder.messageImage.setVisibility(View.VISIBLE);
                 Picasso.get().load(c.getMessage()).placeholder(R.drawable.default_avatar).into(viewHolder.messageImage);
 
             }
             else {
                 viewHolder.messageImage.setVisibility(View.GONE);
-                viewHolder.messageText.setVisibility(View.VISIBLE);
-                viewHolder.messageText.setBackgroundColor(Color.WHITE);
-                viewHolder.messageText.setTextColor(Color.BLACK);
+                viewHolder.messageText.setVisibility(View.GONE);
+                viewHolder.messageText2.setVisibility(View.VISIBLE);
+                viewHolder.messageText2.setBackgroundResource(R.drawable.message_text_background2);
+                viewHolder.messageText2.setTextColor(Color.BLACK);
+
+                viewHolder.messageText2.setText(c.getMessage());
             }
 
         }
         else{
             if(message_type.equals("image")){
-                viewHolder.messageText.setVisibility(View.INVISIBLE);
+                viewHolder.messageText.setVisibility(View.GONE);
+                viewHolder.messageText2.setVisibility(View.GONE);
                 viewHolder.messageImage.setVisibility(View.VISIBLE);
                 Picasso.get().load(c.getMessage()).placeholder(R.drawable.default_avatar).into(viewHolder.messageImage);
 
             }
             else {
                 viewHolder.messageImage.setVisibility(View.GONE);
+                viewHolder.messageText2.setVisibility(View.GONE);
                 viewHolder.messageText.setVisibility(View.VISIBLE);
                 viewHolder.messageText.setBackgroundResource(R.drawable.message_text_background);
                 viewHolder.messageText.setTextColor(Color.WHITE);
+
+                viewHolder.messageText.setText(c.getMessage());
             }
         }
-
-        viewHolder.messageText.setText(c.getMessage());
 
     }
 
