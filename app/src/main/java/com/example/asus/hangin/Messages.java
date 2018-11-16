@@ -7,9 +7,18 @@ public class Messages {
     private boolean seen;
     private String from;
 
-    public Messages(String from) {
+    public Messages(){
+
+    }
+
+    public Messages(String message, String type, long time, boolean seen, String from) {
+        this.message = message;
+        this.type = type;
+        this.time = time;
+        this.seen = seen;
         this.from = from;
     }
+
 
     public String getFrom() {
         return from;
@@ -17,17 +26,6 @@ public class Messages {
 
     public void setFrom(String from) {
         this.from = from;
-    }
-
-    public Messages(){
-
-    }
-
-    public Messages(String message, String type, long time, boolean seen) {
-        this.message = message;
-        this.type = type;
-        this.time = time;
-        this.seen = seen;
     }
 
     public String getMessage() {

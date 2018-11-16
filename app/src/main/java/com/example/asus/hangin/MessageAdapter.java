@@ -52,14 +52,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public void onBindViewHolder(@NonNull MessageViewHolder viewHolder, int i) {
 
         mAuth = FirebaseAuth.getInstance();
-        String current_user_id = mAuth.getCurrentUser().getUid();
+        String current_user_id = mAuth.getCurrentUser().getUid().toString();
 
         Messages c = mMessageList.get(i);
 
-        String from_user = c.getFrom();
+        String from_user = c.getFrom().toString();
         String message_type = c.getType();
 
-        if(from_user == current_user_id){
+        if(from_user.equals(current_user_id)){
 
             if(message_type.equals("image")){
                 viewHolder.messageText.setVisibility(View.INVISIBLE);
