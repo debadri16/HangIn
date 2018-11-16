@@ -70,14 +70,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     protected void onStop() {
-        super.onStop();
 
         if(mAuth.getCurrentUser() != null) {
-            mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
+            //mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
         }
-    }
+
+        super.onStop();
+    }*/
 
     private void sendToStart() {
 

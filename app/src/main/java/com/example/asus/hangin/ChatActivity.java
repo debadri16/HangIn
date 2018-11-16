@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -242,11 +243,24 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser != null)
+        {
+            mRootRef.child("users").child(mCurrentUserId).child("online").setValue("true");
+        }
+    }*/
 
     @Override
     protected void onStop() {
         mRootRef.child("chat").child(mCurrentUserId).removeEventListener(mlistener);
+
         super.onStop();
+
     }
 
     @Override
