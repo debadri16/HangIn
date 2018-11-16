@@ -44,7 +44,7 @@
         android:layout_height="93dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="177dp"
         android:text="@string/welcome_to_hangin"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -58,7 +58,7 @@
         android:layout_above="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="7dp"
         app:srcCompat="@drawable/chat_2_icon" />
 </RelativeLayout>
