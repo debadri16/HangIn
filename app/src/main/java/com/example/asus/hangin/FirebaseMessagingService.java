@@ -19,7 +19,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         String from_user_id = remoteMessage.getData().get("from_user_id");
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher_new)
                 .setContentTitle(notification_title)
                 .setContentText(notification_message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
@@ -29,8 +29,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         intent.putExtra("user_id", from_user_id);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-                // Set the intent that will fire when the user taps the notification
+        // Set the intent that will fire when the user taps the notification
         mBuilder.setContentIntent(pendingIntent);
 
 
