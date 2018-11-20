@@ -316,6 +316,36 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        mProfileDeclineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mFriendReqDatabase.child(mCurrentUser.getUid()).child(user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        mFriendReqDatabase.child(user_id).child(mCurrentUser.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                mProfileSendReqBtn.setEnabled(true);
+                                mCurrent_State = 0;
+                                mProfileSendReqBtn.setText("Send Friend Request");
+
+                                mProfileDeclineBtn.setVisibility(View.INVISIBLE);
+                                mProfileDeclineBtn.setEnabled(false);
+
+                                Toast.makeText(ProfileActivity.this, "Declined friend request", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                    }
+                });
+
+            }
+        });
+
 
     }
 }
