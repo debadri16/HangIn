@@ -9,8 +9,20 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/requests_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/fragment_req_def"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="259dp"
+        android:text="No friend requests sent or recieved"
+        android:textSize="18sp"
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -40,6 +40,9 @@ public class RequestsFragment extends Fragment {
     private String mCurrent_User_id;
     private View mMainView;
 
+    private TextView mDefTxt;
+    private DatabaseReference mChckDb;
+
 
     public RequestsFragment() {
         // Required empty public constructor
@@ -58,6 +61,10 @@ public class RequestsFragment extends Fragment {
         mCurrent_User_id = mAuth.getCurrentUser().getUid();
 
         mFrndReqDatabase = FirebaseDatabase.getInstance().getReference().child("friend_req").child(mCurrent_User_id);
+        mChckDb = FirebaseDatabase.getInstance().getReference().child("friend_req");
+
+        mDefTxt = (TextView)mMainView.findViewById(R.id.fragment_req_def);
+
         mFrndReqDatabase.keepSynced(true);
         mUsersdatabase = FirebaseDatabase.getInstance().getReference().child("users");
         mUsersdatabase.keepSynced(true);
@@ -73,6 +80,20 @@ public class RequestsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        mChckDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.hasChild(mCurrent_User_id)){
+                    mDefTxt.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         FirebaseRecyclerOptions<Requests> options =
                 new FirebaseRecyclerOptions.Builder<Requests>()
