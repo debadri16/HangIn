@@ -70,4 +70,17 @@
         android:text="@string/change_status"
         android:textColor="@android:color/white" />
 
+    <ImageButton
+        android:id="@+id/settings_name_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/settings_display_name"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/settings_display_name"
+        android:alpha="0.5"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        app:srcCompat="@drawable/baseline_edit_black_18dp" />
+
 </RelativeLayout>

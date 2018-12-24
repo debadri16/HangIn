@@ -43,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/user_single_img"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="138dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="11dp"
         android:visibility="invisible"
         app:srcCompat="@android:drawable/presence_online" />
 

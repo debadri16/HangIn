@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +59,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button mStatusBtn;
     private Button mImageBtn;
+    private ImageButton mNameBtn;
 
     private ProgressDialog mProgressDialog;
 
@@ -79,6 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         mStatusBtn = (Button) findViewById(R.id.settings_status_btn);
         mImageBtn = (Button) findViewById(R.id.settings_image_btn);
+        mNameBtn = (ImageButton) findViewById(R.id.settings_name_btn);
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         String current_uid = mCurrentUser.getUid();
@@ -125,6 +128,20 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mNameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent nameIntent = new Intent(SettingsActivity.this, NameActivity.class);
+
+                String nameValue = mName.getText().toString();
+                nameIntent.putExtra("name_value", nameValue);
+
+                startActivity(nameIntent);
 
             }
         });
