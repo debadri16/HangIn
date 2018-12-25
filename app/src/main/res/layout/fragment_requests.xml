@@ -18,10 +18,8 @@
         android:id="@+id/fragment_req_def"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="259dp"
-        android:text="No friend requests sent or recieved"
+        android:layout_centerInParent="true"
+        android:text="No pending friend requests sent/recieved"
         android:textSize="18sp"
         android:visibility="gone" />
 

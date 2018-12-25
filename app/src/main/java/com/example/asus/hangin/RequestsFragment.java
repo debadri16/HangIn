@@ -86,6 +86,7 @@ public class RequestsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(!dataSnapshot.hasChild(mCurrent_User_id)){
                     mDefTxt.setVisibility(View.VISIBLE);
+                    mRequestsList.setVisibility(View.GONE);
                 }
             }
 

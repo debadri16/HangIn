@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +41,11 @@ public class FriendsFragment extends Fragment {
     private String mCurrent_User_id;
     private View mMainView;
 
+    private TextView mAddTxt;
+    private ImageButton mAddFriends;
+
+    private DatabaseReference mChck_frndDb;
+
 
     public FriendsFragment() {
         // Required empty public constructor
@@ -65,6 +71,11 @@ public class FriendsFragment extends Fragment {
         mFriendsList.setHasFixedSize(true);
         mFriendsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        mAddTxt = (TextView) mMainView.findViewById(R.id.fragment_frnd_txtView);
+        mAddFriends = (ImageButton)mMainView.findViewById(R.id.fragment_frnd_btn);
+
+        mChck_frndDb = FirebaseDatabase.getInstance().getReference().child("friends");
+
         // Inflate the layout for this fragment
         return mMainView;
 
@@ -73,6 +84,31 @@ public class FriendsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        mChck_frndDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.hasChild(mCurrent_User_id)){
+                    mAddTxt.setVisibility(View.VISIBLE);
+                    mAddFriends.setVisibility(View.VISIBLE);
+
+                    mFriendsList.setVisibility(View.GONE);
+
+                    mAddFriends.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent usersIntent = new Intent(getActivity(), UsersActivity.class);
+                            startActivity(usersIntent);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         FirebaseRecyclerOptions<Friends> options =
                 new FirebaseRecyclerOptions.Builder<Friends>()

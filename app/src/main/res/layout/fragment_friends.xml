@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +10,37 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/friends_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible">
 
     </android.support.v7.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/fragment_frnd_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="140dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/round_people_black_18dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/fragment_frnd_txtView"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="96dp"
+        android:layout_toEndOf="@+id/fragment_frnd_btn"
+        android:alpha="0.5"
+        android:text="add friends"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

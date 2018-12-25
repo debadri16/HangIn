@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +54,11 @@ public class ChatsFragment extends Fragment {
 
     private View mMainView;
 
+    private TextView mAddTxt;
+    private ImageButton mChatBtn;
+
+    private DatabaseReference mChck_chatDb;
+
     public ChatsFragment() {
         // Required empty public constructor
     }
@@ -80,6 +88,11 @@ public class ChatsFragment extends Fragment {
         mConvList.setHasFixedSize(true);
         mConvList.setLayoutManager(linearLayoutManager);
 
+        mAddTxt = (TextView) mMainView.findViewById(R.id.fragment_chat_txtView);
+        mChatBtn = (ImageButton)mMainView.findViewById(R.id.fragment_chat_btn);
+
+        mChck_chatDb = FirebaseDatabase.getInstance().getReference().child("chat");
+
         // Inflate the layout for this fragment
         return mMainView;
     }
@@ -88,6 +101,32 @@ public class ChatsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        mChck_chatDb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.hasChild(mCurrent_user_id)){
+                    mAddTxt.setVisibility(View.VISIBLE);
+                    mChatBtn.setVisibility(View.VISIBLE);
+
+                    mConvList.setVisibility(View.GONE);
+
+                    mChatBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Intent usersIntent = new Intent(getActivity(), UsersActivity.class);
+                            startActivity(usersIntent);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Query conversationQuery = mConvDatabase.orderByChild("timestamp");
 
